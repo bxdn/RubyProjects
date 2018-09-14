@@ -29,6 +29,3 @@ def search(value,node)
     return search(value, node.right) if (value > node.value and node.right != nil)
     return nil
 end
-arr = [7,73,6,3,0,542,1,52,4]
-root = build_tree(arr)
-puts search(4,root).parent.parent.parent.right.right.value
