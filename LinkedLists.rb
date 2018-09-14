@@ -15,12 +15,10 @@ class LinkedList
         @head = node
     end
     def size(node=@head)
-        return 1 if node==@tail
-        return 1 + size(node.next_node)
+        return node==@tail ? 1 : 1 + size(node.next_node)
     end
     def at(idx,node=@head)
-        return node if idx == 0
-        return at(idx-1,node.next_node)
+        return idx == 0 ? node : at(idx-1,node.next_node)
     end
     def pop(node=@head)
         (@tail = node; @tail.next_node = nil; return) if node.next_node == @tail
@@ -37,8 +35,7 @@ class LinkedList
         return find(value,idx+1,node.next_node)
     end
     def to_s(node=@head)
-        return "(#{node.value}) -> nil" if node == @tail
-        return "(#{node.value}) -> #{to_s(node.next_node)}"
+        return node == @tail ? "(#{node.value}) -> nil" : "(#{node.value}) -> #{to_s(node.next_node)}"
     end
     def insert_at(idx)
         node = Node.new(at(idx))
